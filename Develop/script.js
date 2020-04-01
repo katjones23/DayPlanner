@@ -23,6 +23,7 @@ workHours.forEach(function addHourstoPage(item, index){
     // remove once ready for prod
     $(textArea).text("test");
     var saveBtn = $("<button>").addClass("saveBtn col-md-1");
+    $(saveBtn).append('<i class="far fa-save"></i>')
 
     $(".container").append(newRow);
     // $(newRow).append(timeblock);
@@ -40,9 +41,3 @@ workHours.forEach(function addHourstoPage(item, index){
         $(textArea).addClass("future");
     };
 });
-
-    // potential classes needed:
-    // .time-block
-    // .row
-    // .hour
-    // .textarea
