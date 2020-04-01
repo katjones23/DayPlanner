@@ -17,13 +17,15 @@ var workHours = ["8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM
 
 workHours.forEach(function (item){
     var newRow = $("<div>").addClass("row");
-    var timeblock = $("<div>").addClass("time-block");
-    var newHour = $("<section>").text(item);
+    var newHour = $("<div>").text(item);
     $(newHour).addClass("hour");
+    var timeblock = $("<div>").addClass("time-block");
+    var textArea = $("<div>").addClass("textarea");
 
     $(".container").append(newRow);
-    $(newRow).append(timeblock);
-    $(timeblock).append(newHour);
+    $(newRow).append(newHour);
+    $(newHour).append(timeblock);
+    $(timeblock).append(textArea)
 });
 
     // potential classes needed:
