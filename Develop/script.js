@@ -17,16 +17,16 @@ workHours.forEach(function addHourstoPage(item, index){
     var newRow = $("<div>").addClass("row");
     // var timeblock = $("<div>").addClass("time-block");
     var newHour = $("<div>").text(item.toUpperCase());
-    $(newHour).addClass("hour");
+    $(newHour).addClass("hour col-md-1");
     $(newHour).attr("data-time", moment().format("MMMM Do YYYY") + " " + milHours[index])
-    var textArea = $("<p>").addClass("textarea");
+    var textArea = $("<p>").addClass("textarea col-md-10");
     // remove once ready for prod
     $(textArea).text("test");
-    var saveBtn = $("<button>").addClass("saveBtn");
+    var saveBtn = $("<button>").addClass("saveBtn col-md-1");
 
     $(".container").append(newRow);
+    // $(newRow).append(timeblock);
     $(newRow).append(newHour);
-    // $(timeblock).append(newHour);
     $(newRow).append(textArea);
     $(newRow).append(saveBtn);
 
