@@ -20,8 +20,6 @@ workHours.forEach(function addHourstoPage(item, index){
     $(newHour).addClass("hour col-md-1");
     $(newHour).attr("data-time", moment().format("MMMM Do YYYY") + " " + milHours[index])
     var textArea = $("<p>").addClass("textarea col-md-10");
-    // remove once ready for prod
-    $(textArea).text("test");
     var saveBtn = $("<button>").addClass("saveBtn col-md-1");
     $(saveBtn).append('<i class="far fa-save"></i>')
 
