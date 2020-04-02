@@ -68,3 +68,17 @@ body {
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
+
+@media screen and (max-width: 768px) {
+  .row {
+    padding: 50px 0 50px 0;
+    box-sizing: content-box;
+  }
+  .saveBtn {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .textarea {
+    overflow: hidden;
+  }
+}
