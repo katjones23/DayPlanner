@@ -1,18 +1,13 @@
-// WHEN I click into a timeblock
-// THEN I can enter an event
-// WHEN I click the save button for that timeblock
-// THEN the text for that event is saved in local storage
-// WHEN I refresh the page
-// THEN the saved events persist
-
 // current day under header
 $("#currentDay").text(moment().format("dddd, MMMM Do YYYY"));
 
-// timeblocks 8-5, because who actually gets a 9-5 anymore?
+// 8-5, because who actually gets a 9-5 anymore?
 var workHours = ["8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"]
+// 24 correlated to work hours array for later comparison in foreach loop
 var milHours = ["08", "09", "10", "11", "12", "13", "14", "15", "16", "17"]
 var currentHour = moment().format("MMMM Do YYYY HH")
 
+// function to add row with three columns for hour, textarea, and save button for each hour
 workHours.forEach(function addHourstoPage(item, index){
     var newRow = $("<div>").addClass("row");
     var newHour = $("<div>").text(item.toUpperCase());
@@ -29,6 +24,7 @@ workHours.forEach(function addHourstoPage(item, index){
     $(newRow).append(textArea);
     $(newRow).append(saveBtn);
 
+    // comparing hour in the block to current hour to set colors
     var hourData = $(newHour).attr("data-time")
 
     if (hourData === currentHour) {
@@ -40,9 +36,10 @@ workHours.forEach(function addHourstoPage(item, index){
     };
 });
 
-//local storage logic
+//localstorage logic
 $(".saveBtn").on("click", saveEvent);
 
+// when button is clicked, associate the correct text area and its input, then save to its own localstorage item
 function saveEvent(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -54,6 +51,8 @@ function saveEvent(event) {
     localStorage.setItem("events" + btnID, singleEvent);
 }
 
+// since the input areas and localstorage items will not exceed the number of work hours, use that array to loop through localstorage and add
+// text back to the page in the same item
 function renderEvents() {
     $(".textarea").empty();
 
