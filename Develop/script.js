@@ -15,16 +15,16 @@ var currentHour = moment().format("MMMM Do YYYY HH")
 
 workHours.forEach(function addHourstoPage(item, index){
     var newRow = $("<div>").addClass("row");
-    // var timeblock = $("<div>").addClass("time-block");
     var newHour = $("<div>").text(item.toUpperCase());
     $(newHour).addClass("hour col-md-1");
     $(newHour).attr("data-time", moment().format("MMMM Do YYYY") + " " + milHours[index])
-    var textArea = $("<p>").addClass("textarea col-md-10");
+    var textArea = $("<textarea>").addClass("textarea col-md-10");
+    $(textArea).attr("data-ta-id", index)
     var saveBtn = $("<button>").addClass("saveBtn col-md-1");
+    $(saveBtn).attr("data-btn-id", index)
     $(saveBtn).append('<i class="far fa-save"></i>')
 
     $(".container").append(newRow);
-    // $(newRow).append(timeblock);
     $(newRow).append(newHour);
     $(newRow).append(textArea);
     $(newRow).append(saveBtn);
@@ -39,3 +39,28 @@ workHours.forEach(function addHourstoPage(item, index){
         $(textArea).addClass("future");
     };
 });
+
+//local storage logic
+$(".saveBtn").on("click", saveEvent);
+
+function saveEvent(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    var btnID = $(this).attr("data-btn-id");
+    relTextarea = $("textarea[data-ta-id*=" + btnID + "]")
+    var singleEvent = $(relTextarea).val();
+
+    localStorage.setItem("events" + btnID, singleEvent);
+}
+
+function renderEvents() {
+    $(".textarea").empty();
+
+    for (var i = 0; i < workHours.length; i++) {
+        var inputText = localStorage.getItem("events" + i);
+        $("textarea[data-ta-id*=" + i + "]").text(inputText);
+    }    
+}
+
+renderEvents();
