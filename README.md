@@ -1,4 +1,4 @@
-# 05 Third-Party APIs: Work Day Scheduler
+# DayPlanner
 
 A day planner app for work hours 8-5 to enter and save events for the same day.
 
